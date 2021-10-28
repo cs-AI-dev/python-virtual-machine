@@ -4,6 +4,7 @@
 import os
 import sys
 from sys import argv as clInput
+import psutil
 
 version = "0.0.1"
 
@@ -36,7 +37,7 @@ master = Tk()
 master.config(bg=bg)
 
 title = Label(master, text=f"Dragonscale Python Virtual Machine v{version}", font=font(24), bg=bg, fg=fg)
-title.grid(row=1, column=1)
+title.grid(row=1, column=1, columnspan=2)
 
 # - Root and title
 
@@ -77,7 +78,7 @@ def EnableStdoutRedirect():
 	stdoutRedirecting = True
 	sys.stdout = StdoutRedirector(printOutput)
 	
-printOutput.grid(row=2, column=1)
+printOutput.grid(row=2, column=2)
 	
 # - Standard output redirecting
 
@@ -101,6 +102,35 @@ fileSelectionButton.grid(row=1, column=2)
 
 master.bind("<Return>", ExecuteTargetedFile)
 				 
-fileSelectionBar.grid(row=3, column=1)
+fileSelectionBar.grid(row=3, column=2)
 
 # - File selection bar
+
+# - Execution control bar
+
+executionControl = Frame(master, bg=bg)
+
+# - - Memory control
+
+
+
+def calibrateMemoryControl:
+	print(" [ calibrating memory control ... ] ")
+	global baseMemory
+	baseMemory = psutil.Process(os.getpid()).memory_info().rss # in bytes
+	print(f" [ complete, current mem {int(baseMemory / 1000)} KB ] ")
+
+def recalibrateMemoryControl:
+	print(" [ recalibrating memory control ... ] ")
+	baseMemory = psutil.Process(os.getpid()).memory_info().rss # in bytes
+	print(f" [ complete, current mem {int(baseMemory / 1000)} KB ] "
+	
+# - - Memory control
+	
+executionControl.grid(row=2, column=1, rowspan=2)
+	      
+# - Execution control bar
+
+if __name__ == "__main__":
+	recalibrateMemoryControl()
+	master.mainloop()
