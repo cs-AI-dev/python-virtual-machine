@@ -4,7 +4,6 @@
 import os
 import sys
 from sys import argv as clInput
-import psutil
 
 version = "0.0.1"
 
@@ -14,6 +13,16 @@ red = "red"
 green = "lime"
 def font(size):
 	return ("OCR A Extended", int(size))
+
+# Ensure PSutil is installed
+try:
+	os.system("py pip install psutil -q")
+except:
+	try:
+		os.system("python pip install psutil -q")
+	except:
+		print("[ERROR] Could not install Psutil for memory control")
+		exit()
 
 # Ensure TK is installed
 try:
