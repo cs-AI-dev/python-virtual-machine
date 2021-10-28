@@ -31,6 +31,7 @@ finally:
 # Construct GUI
 
 # - Root and title
+
 master = Tk()
 master.config(bg=bg)
 
@@ -45,12 +46,12 @@ title.grid(row=1, column=1)
 # for some reason the system's stdout passto in tkinter requires
 # an object as an argument.
 class StdoutRedirectorInternal(object):
-    def __init__(self,text_area):
-        self.text_area = text_area
+	def __init__(self,text_area):
+		self.text_area = text_area
 
 class StdoutRedirector(StdoutRedirectorInternal):
-    def write(self,str):
-        self.text_area.write(str,False)
+	def write(self,str):
+		self.text_area.write(str,False)
 		
 printOutput = Label(master, text=" [ Dragonscale PVM stdout redirect ]", font=font(12), bg=bg, fg=fg)
 printOutput.config(height=20, width=30)
